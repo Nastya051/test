@@ -1,11 +1,11 @@
-#include <string>
+п»ї#include <string>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 
 using namespace std;
 
-//проверяем, является ли числом
+//РїСЂРѕРІРµСЂСЏРµРј, СЏРІР»СЏРµС‚СЃСЏ Р»Рё С‡РёСЃР»РѕРј
 bool is_digit(char a){
 	 return a >= '0' && a <= '9';
 }
@@ -13,18 +13,18 @@ bool is_digit(char a){
 int main(){
 	setlocale(LC_ALL, "");
 	ifstream in("input.txt");
-	string input;//слово
-	stringstream ss;	//строковый поток
-	while(getline(in, input)){//считываем по предложению
-		 if(input.size() < 2){//если меньше 2 симвлов в строке
+	string input;//СЃР»РѕРІРѕ
+	stringstream ss;	//СЃС‚СЂРѕРєРѕРІС‹Р№ РїРѕС‚РѕРє
+	while(getline(in, input)){//СЃС‡РёС‚С‹РІР°РµРј РїРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЋ
+		 if(input.size() < 2){//РµСЃР»Рё РјРµРЅСЊС€Рµ 2 СЃРёРјРІР»РѕРІ РІ СЃС‚СЂРѕРєРµ
 			ss << input << '\n';
 		 }
 		 else if(input.size() == 2 && !is_digit(input[0]) && !is_digit(input[1])){
 			 ss << input << '\n';
 		 }
-		 else if(input.size() > 2 && !(is_digit(input[0]) && is_digit(input[1]) && !is_digit(input[1]))){ //обрабатываем пограничные случаи
+		 else if(input.size() > 2 && !(is_digit(input[0]) && is_digit(input[1]) && !is_digit(input[1]))){ //РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј РїРѕРіСЂР°РЅРёС‡РЅС‹Рµ СЃР»СѓС‡Р°Рё
 			 if(!(is_digit(input[input.size() - 1]) && is_digit(input[input.size() - 2]) && !is_digit(input[input.size() - 3]))){
-				 bool flag = false;//поиск двузначных чисел в строке
+				 bool flag = false;//РїРѕРёСЃРє РґРІСѓР·РЅР°С‡РЅС‹С… С‡РёСЃРµР» РІ СЃС‚СЂРѕРєРµ
 				 for(int i = 1; i < input.size() - 2; ++i){
 					if(is_digit(input[i]) && is_digit(input[i + 1]) && !is_digit(input[i - 1]) && !is_digit(input[i + 2])){
 						flag = true;
@@ -38,7 +38,7 @@ int main(){
 		 }
 
 	}
-	cout << ss.str();// выводим предложения
-	in.close();//закрываем файл										   
+	cout << ss.str();// РІС‹РІРѕРґРёРј РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+	in.close();//Р·Р°РєСЂС‹РІР°РµРј С„Р°Р№Р»										   
 	system("pause>>void");
 }
